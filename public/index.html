@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot SapaPajak</title>
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- CHAT WIDGET -->
+<div class="chat-widget" id="chatWidget">
+
+  <div class="chat-header">
+    💬 Chat AI SapaPajak
+  </div>
+
+
+  <div id="chat-box" class="chat-box"></div>
+  <div class="quick-suggestions">
+  <button onclick="useSuggestion('Persyaratan Mendaftarkan PBB-P2?')">
+    Persyaratan Mendaftarkan PBB-P2?
+  </button>
+
+  <button onclick="useSuggestion('Apa itu Api Pandawa?')">
+    Apa itu Api Pandawa?
+  </button>
+</div>
+  <div class="chat-input">
+    <input id="msg" placeholder="Tulis pertanyaan..." />
+    <button onclick="send()">➤</button>
+  </div>
+
+</div>
+
+<!-- TOGGLE BUTTON -->
+<div class="chat-toggle-wrapper">
+
+  <button class="chat-toggle" onclick="toggleChat()">
+    💬
+  </button>
+
+  <div class="chat-tooltip">
+    News ✨, Chat AI SapaPajak
+  </div>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

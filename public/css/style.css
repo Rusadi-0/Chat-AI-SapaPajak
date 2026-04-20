@@ -1,0 +1,332 @@
+/* =========================
+   GLOBAL
+========================= */
+body {
+  margin: 0;
+  font-family: 'Public Sans', sans-serif;
+  background: linear-gradient(135deg, #f4f6ff, #eef1ff);
+}
+
+/* =========================
+   CHAT WIDGET
+========================= */
+.chat-widget {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+
+  width: 380px;
+  height: 550px;
+
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(105,108,255,0.25);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  transform: scale(0.8) translateY(20px);
+  transform-origin: bottom right;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.chat-widget.active {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* =========================
+   HEADER
+========================= */
+.chat-header {
+  background: linear-gradient(135deg, #696cff, #4f56ff);
+  color: white;
+  padding: 14px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   QUICK SUGGESTIONS
+========================= */
+.quick-suggestions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.quick-suggestions button {
+  border: 1px solid #696cff;
+  background: #f4f5ff;
+  color: #696cff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-suggestions button:hover {
+  background: #696cff;
+  color: white;
+  transform: scale(1.08);
+}
+
+/* hide anim */
+.quick-suggestions.hide {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+/* =========================
+   CHAT BOX
+========================= */
+.chat-box {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  background: #f9f9ff;
+  scroll-behavior: smooth;
+}
+
+/* custom scroll */
+.chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-box::-webkit-scrollbar-thumb {
+  background: #cfd2ff;
+  border-radius: 10px;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+.user, .bot {
+  display: flex;
+  margin: 8px 0;
+  animation: fadeUp 0.25s ease;
+}
+
+.user {
+  justify-content: flex-end;
+}
+
+.bot {
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+/* =========================
+   AVATAR
+========================= */
+.bot-avatar {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.bot-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #696cff;
+  object-fit: cover;
+}
+
+/* =========================
+   BUBBLE
+========================= */
+.bubble {
+  max-width: 80%;
+  padding: 12px 15px;
+  border-radius: 14px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  transition: all 0.2s ease;
+}
+
+.user .bubble {
+  background: linear-gradient(135deg, #696cff, #4f56ff);
+  color: white;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 5px 15px rgba(105,108,255,0.3);
+}
+
+.bot .bubble {
+  background: #eef0ff;
+  color: #333;
+  border-bottom-left-radius: 4px;
+}
+
+.bubble:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================
+   TYPING
+========================= */
+.typing {
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+}
+
+.typing span {
+  width: 6px;
+  height: 6px;
+  background: #696cff;
+  border-radius: 50%;
+  animation: bounce 1.2s infinite;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+/* =========================
+   INPUT
+========================= */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #eee;
+  background: #fff;
+}
+
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 14px;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.chat-input input:focus {
+  background: #f9faff;
+}
+
+.chat-input input:disabled {
+  background: #eee;
+  cursor: not-allowed;
+}
+
+.chat-input button {
+  background: linear-gradient(135deg, #696cff, #4f56ff);
+  color: white;
+  border: none;
+  width: 55px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chat-input button:hover {
+  transform: scale(1.08);
+}
+
+.chat-input button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* =========================
+   TOGGLE BUTTON
+========================= */
+.chat-toggle-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.chat-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #696cff, #4f56ff);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(105,108,255,0.4);
+  transition: all 0.25s ease;
+}
+
+.chat-toggle:hover {
+  transform: scale(1.12) rotate(5deg);
+}
+
+/* =========================
+   TOOLTIP
+========================= */
+.chat-tooltip {
+  position: absolute;
+  right: 70px;
+  bottom: 50%;
+  transform: translateY(50%);
+
+  background: #111;
+  color: white;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  white-space: nowrap;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.chat-tooltip::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #111;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 480px) {
+  .chat-widget {
+    width: 92%;
+    height: 70vh;
+    right: 4%;
+    bottom: 80px;
+  }
+
+  .chat-tooltip {
+    display: none;
+  }
+}
