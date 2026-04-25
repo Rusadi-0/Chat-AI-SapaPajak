@@ -51,7 +51,8 @@ app.post("/chat", async (req, res) => {
                 // model: "llama3:8b",
         // model: "deepseek-coder:latest",
         // model: "phi3:mini",
-        model: "llama3.2:3b",
+        // model: "llama3.2:3b",
+	model: "llama3.2:1b",
 
         system: `Kamu adalah Chat AI SapaPajak dari Bapenda Tabalong.
 Jawab singkat, jelas, dan informatif.
@@ -89,6 +90,6 @@ ${userMessage}
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server jalan di http://localhost:3000");
+app.listen(3003, () => {
+  console.log("Server jalan di http://localhost:3003");
 });
